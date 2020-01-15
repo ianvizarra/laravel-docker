@@ -55,7 +55,8 @@ RUN docker-php-ext-install \
     tokenizer \
     xml \
     zip \
-    exif
+    exif \
+    intl
 
 # Install composer
 ENV COMPOSER_HOME /composer
