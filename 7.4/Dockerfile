@@ -1,4 +1,4 @@
-FROM php:7.4-alpine
+FROM php:7.4.1-apache
 
 # Install dev dependencies
 RUN apk add --no-cache --virtual .build-deps \
@@ -30,7 +30,8 @@ RUN apk add --no-cache \
     openssh-client \
     postgresql-libs \
     rsync \
-    zlib-dev
+    zlib-dev \
+    libicu-dev
 
 # Install PECL and PEAR extensions
 RUN pecl install \
@@ -41,6 +42,9 @@ RUN pecl install \
 RUN docker-php-ext-enable \
     imagick \
     xdebug
+
+RUN docker-php-ext-configure intl
+    
 RUN docker-php-ext-install \
     bcmath \
     curl \
@@ -55,7 +59,8 @@ RUN docker-php-ext-install \
     tokenizer \
     xml \
     zip \
-    exif 
+    exif \
+    intl
 
 # Install composer
 ENV COMPOSER_HOME /composer
