@@ -31,7 +31,7 @@ RUN apk add --no-cache \
     postgresql-libs \
     rsync \
     zlib-dev \
-    libicu-dev
+    icu-dev
 
 # Install PECL and PEAR extensions
 RUN pecl install \
