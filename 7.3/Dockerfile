@@ -68,6 +68,12 @@ RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/
 # Install PHP_CodeSniffer
 RUN composer global require "squizlabs/php_codesniffer=*"
 
+# Install Python
+ENV PYTHONUNBUFFERED=1
+RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
+RUN python3 -m ensurepip
+RUN pip3 install --no-cache --upgrade pip setuptools
+
 # Cleanup dev dependencies
 RUN apk del -f .build-deps
 
