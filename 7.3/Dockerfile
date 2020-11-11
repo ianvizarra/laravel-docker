@@ -22,7 +22,7 @@ RUN apk add --no-cache \
     libpng-dev \
     make \
     mysql-client \
-    nodejs \
+    nodejs-current \
     nodejs-npm \
     yarn \
     openssh-client \
